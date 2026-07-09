@@ -1,0 +1,15 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+int main()
+{
+    int n, m, a;
+    cin >> n >> m >> a;
+
+    ll i = ceil((n+a-1)/a);
+    ll j = ceil((m+a-1)/a); 
+    cout << i * j;
+
+    return 0;
+}
