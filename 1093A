@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int tc;
+    cin >> tc;
+    while(tc--) {
+        int n;
+        cin >> n;
+        int cnt = 0;
+        
+        if(n <= 7) cout << 1 << "\n";
+        else {
+            while(n > 0) {
+                if(n > 7) {
+                    n -= 7;
+                    cnt++;
+                    if(n <= 7) {
+                        n = 0;
+                        cnt++;
+                    }
+                }
+            }
+            cout << cnt << "\n";
+        }
+    }
+    return 0;
+}
