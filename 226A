@@ -1,0 +1,32 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+ll binary_exponential(ll n, ll m)
+{
+    ll a = 3;
+    ll b = n;
+    ll res = 1;
+    
+    while(b > 0) {
+        if(b % 2 != 0) {
+            res = (res * a) % m; // for large exponent
+        }
+        
+        a = (a * a) % m;
+        b >>= 1; // divide exponent by 2 in bin
+    }
+    return (res-1+m)%m; // avoid returning negative number
+}
+
+int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    ll n, m;
+    cin >> n >> m;
+    
+    cout << binary_exponential(n, m);
+    
+    return 0;
+}
