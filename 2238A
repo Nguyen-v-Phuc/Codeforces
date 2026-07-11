@@ -1,0 +1,62 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+#define FOR(i, a, b) for(int i = a; i < b; i++)
+
+void solve()
+{
+    int n, k;
+    cin >> n >> k;
+    vector<int> v(n);
+    FOR(i, 0, n) cin >> v[i];
+    vector<int> end(n);
+    FOR(i, 0, n) cin >> end[i];
+    
+    vector<int> backup1 = v;
+    vector<int> backup2 = end;
+    
+    sort(backup1.begin(), backup1.end());
+    sort(backup2.begin(), backup2.end());
+    
+    bool possible = true;
+    
+    FOR(i, 0, n) {
+        if(backup1[i] < backup2[i]) {
+            possible = false;
+        }
+    }
+    
+    if(!possible) {
+        cout << -1 << "\n";
+        return;
+    }
+    else {
+        ll cost1 = k;
+        FOR(i, 0, n) {
+            cost1 += backup1[i] - backup2[i];
+        }
+        ll cost2 = 0;
+        bool no_reordered = true;
+        FOR(i, 0, n) {
+            if(v[i] < end[i]) no_reordered = false;
+            
+            cost2 += v[i] - end[i];
+        }
+        if(no_reordered) cout << min(cost1, cost2) << "\n";
+        else cout << cost1 << "\n";
+    }
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int tc;
+    cin >> tc;
+    while(tc--) {
+        solve();
+    }
+
+    return 0;
+}
