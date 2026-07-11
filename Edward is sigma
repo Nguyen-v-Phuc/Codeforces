@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long
+#define FOR(i, a, b) for(int i = a; i < b; i++)
+#define FORD(i, a, b) for(int i = a; i > b; i--)
+#define INFINT 2e9 // 2e9
+#define INFLL 2e18 // 2e18
+#define esp 1e-9
+#define PI 3.14159265
+#define hash_map unordered_map
+
+int main()
+{
+    int n, k;
+    cin >> n >> k;
+    vector<int> v(n);
+    FOR(i, 0, n) {
+        cin >> v[i];
+    }
+    
+    hash_map<ll, int> map;
+    
+    map[0] = -1;
+    ll sum = 0;
+    int ans = 0;
+    
+    FOR(i, 0, n) {
+        sum += v[i] - k;
+        
+        if(map.count(prefix)) {
+            int length = i - map[sum];
+            ans = max(ans, length);
+        }
+        else {
+            map[sum] = i;
+        }
+    }
+    
+    cout << ans;
+
+    return 0;
+}
