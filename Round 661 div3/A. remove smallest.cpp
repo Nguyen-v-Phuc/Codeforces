@@ -16,7 +16,6 @@ void solve() {
     for(int i = 1; i < n; i++) {
         if(v[i] - v[i-1] > 1) {
             possible = false;
-            break;
         }
     }
     
