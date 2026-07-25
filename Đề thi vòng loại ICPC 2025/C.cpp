@@ -15,16 +15,6 @@ using namespace std;
 inline ll GCD(ll a, ll b) {while (b != 0) {ll c = a % b; a = b; b = c;} return a;};
 inline ll LCM(ll a, ll b) {return (a / GCD(a,b)) * b;};
 
-bool check(vector<ll> &v, ll k)
-{
-    for(ll i : v) {
-        if(GCD(k, i) != 1) {
-            return false;
-        }
-    }
-    return true;
-}
-
 void solve()
 {
     int n;
