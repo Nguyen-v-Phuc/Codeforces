@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long long
+#define FOR(i, a, b) for(int i = a; i < b; i++)
+#define FORE(i, a, b) for(int i = a; i <= b; i++)
+#define FORLL(i, a, b) for(ll i = a; i < b; i++)
+#define FORELL(i, a, b) for(ll i = a; i <= b; i++)
+#define FORD(i, a, b) for(int i = a; i > b; i--)
+#define INF 2e9 // 2e9
+#define INFLL 2e18 // 2e18
+#define esp 1e-9
+#define PI 3.14159265
+ 
+inline ll GCD(ll a, ll b) {while (b != 0) {ll c = a % b; a = b; b = c;} return a;};
+inline ll LCM(ll a, ll b) {return (a / GCD(a,b)) * b;};
+
+bool check(vector<ll> &v, ll k)
+{
+    for(ll i : v) {
+        if(GCD(k, i) != 1) {
+            return false;
+        }
+    }
+    return true;
+}
+
+void solve()
+{
+    int n;
+    cin >> n;
+    vector<int> arr(n);
+    FOR(i, 0, n) {
+        cin >> arr[i];
+    }
+    sort(arr.begin(), arr.end());
+    
+    ll res = 0;
+    FORE(i, 1, n) {
+        res += (2 * i - 1 - n) * arr[i-1];
+    }
+    cout << res;
+}
+
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    solve();
+    return 0;
+}
