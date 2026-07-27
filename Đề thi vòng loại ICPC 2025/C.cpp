@@ -17,17 +17,18 @@ inline ll LCM(ll a, ll b) {return (a / GCD(a,b)) * b;};
 
 void solve()
 {
-    int n;
+    ll  n;
     cin >> n;
-    vector<int> arr(n);
-    FOR(i, 0, n) {
+    vector<ll> arr(n);
+    FORLL(i, 0, n) {
         cin >> arr[i];
     }
     sort(arr.begin(), arr.end());
     
     ll res = 0;
-    FORE(i, 1, n) {
-        res += (2 * i - 1 - n) * arr[i-1];
+    FORLL(i, 0, n) {
+        ll coeff = (ll)i - (ll)(n - 1 - i); // fix overflow
+        res += coeff * arr[i];
     }
     cout << res;
 }
@@ -37,6 +38,7 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    solve();
+    int t = 1;
+    while(cin >> t) solve();
     return 0;
 }
