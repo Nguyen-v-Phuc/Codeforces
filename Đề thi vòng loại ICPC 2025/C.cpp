@@ -2,35 +2,45 @@
 using namespace std;
 
 #define ll long long
-#define FOR(i, a, b) for(int i = a; i < b; i++)
-#define FORE(i, a, b) for(int i = a; i <= b; i++)
-#define FORLL(i, a, b) for(ll i = a; i < b; i++)
-#define FORELL(i, a, b) for(ll i = a; i <= b; i++)
-#define FORD(i, a, b) for(int i = a; i > b; i--)
-#define INF 2e9 // 2e9
-#define INFLL 2e18 // 2e18
-#define esp 1e-9
-#define PI 3.14159265
- 
-inline ll GCD(ll a, ll b) {while (b != 0) {ll c = a % b; a = b; b = c;} return a;};
-inline ll LCM(ll a, ll b) {return (a / GCD(a,b)) * b;};
+
+void print128(__int128_t n) {
+    if (n == 0) {
+        cout << 0;
+        return;
+    }
+    if (n < 0) {
+        cout << '-';
+        n = -n;
+    }
+    string s = "";
+    while (n > 0) {
+        s += (char)('0' + (n % 10));
+        n /= 10;
+    }
+    reverse(s.begin(), s.end());
+    cout << s;
+}
 
 void solve()
 {
-    ll  n;
-    cin >> n;
+    int n;
+    if (!(cin >> n)) return;
+    
     vector<ll> arr(n);
-    FORLL(i, 0, n) {
+    for (int i = 0; i < n; i++) {
         cin >> arr[i];
     }
+    
     sort(arr.begin(), arr.end());
     
-    ll res = 0;
-    FORLL(i, 0, n) {
-        ll coeff = (ll)i - (ll)(n - 1 - i); // fix overflow
-        res += coeff * arr[i];
+    __int128_t res = 0;
+    for (int i = 0; i < n; i++) {
+        ll coeff = (ll)i - (ll)(n - 1 - i);
+        res += (__int128_t)coeff * arr[i];
     }
-    cout << res;
+    
+    print128(res);
+    cout << "\n";
 }
 
 int main()
@@ -38,7 +48,6 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     
-    int t = 1;
-    while(cin >> t) solve();
+    solve();
     return 0;
 }
