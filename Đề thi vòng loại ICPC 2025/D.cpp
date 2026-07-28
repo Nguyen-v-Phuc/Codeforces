@@ -17,17 +17,17 @@ inline ll LCM(ll a, ll b) {return (a / GCD(a,b)) * b;};
 
 void solve()
 {
-    int n;
+    ll n;
     cin >> n;
     string s;
     cin >> s;
     
-    int curr_len = 1;
-    int res = 0;
+    ll curr_len = 1;
+    ll res = 0;
     
     // formula: length * (length - 1) / 2
     
-    FOR(i, 1, n) {
+    FORLL(i, 1, n) {
         if(s[i] == s[i-1]) {
             curr_len++;
         }
